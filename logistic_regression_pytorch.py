@@ -58,6 +58,7 @@ optimizer = torch.optim.SGD(model.parameters(), learning_rate)
 
 # Training loop
 iter = 0
+print('Now training...')
 for epoch in range(epochs):
     for i, (images, labels) in enumerate(training_loader):
 
@@ -106,3 +107,18 @@ for epoch in range(epochs):
 
             # Print Loss
             print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.data, accuracy))
+
+# Testing the model
+for i, (images, labels) in enumerate(test_loader):
+    images = Variable(images.view(-1, 28 * 28))
+
+    # Forward pass to get output
+    outputs = model(images)
+
+    # Get predictions from the maximum value
+    _, predicted = torch.max(outputs.data, 1)
+
+    print('Prediction: ', end='')
+    print(predicted[0], end=' ')
+    print('Label for Image %d : ' % i, end='')
+    print(labels[0])
