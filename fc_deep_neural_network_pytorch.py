@@ -7,12 +7,12 @@ import torchvision.transforms as transforms
 import torch.utils as utils
 
 # Loading training set and test set
-training_set = datasets.MNIST('./../logistic_regression/data',
+training_set = datasets.MNIST('./data',
                               train=True,
                               transform=transforms.ToTensor(),
                               download=True)
 
-test_set = datasets.MNIST('./../logistic_regression/data',
+test_set = datasets.MNIST('./data',
                           train=False,
                           transform=transforms.ToTensor(),
                           download=True)
